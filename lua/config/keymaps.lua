@@ -16,3 +16,19 @@ for i = 1, 6 do
     require("bufferline").go_to_buffer(i, true)
   end, { desc = "Go to buffer tab " .. i, silent = true })
 end
+
+-- Window width adjustments
+vim.keymap.set("n", "<C-x>", "<C-w><", { desc = "Decrease window width" })
+vim.keymap.set("n", "<C-z>", "<C-w>>", { desc = "Increase window width" })
+
+
+-- Copy current file path
+vim.keymap.set("n", "<leader>fP", function()
+  local path = vim.fn.expand("%:p")
+  if path == "" then
+    vim.notify("No file currently open")
+    return
+  end
+  vim.fn.setreg("+", path)
+  vim.notify("Copied path: " .. path)
+end, { desc = "Copy file path" })
