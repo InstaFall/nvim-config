@@ -7,8 +7,12 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
 
 vim.keymap.set("n", "<leader>rn", ":IncRename ")
 
-vim.keymap.set("n", "<A-w>", ":b#<bar>bd#<CR>",
-  { desc = "Close current buffer and switch to previous", silent = true, noremap = true })
+vim.keymap.set(
+  "n",
+  "<A-w>",
+  ":b#<bar>bd#<CR>",
+  { desc = "Close current buffer and switch to previous", silent = true, noremap = true }
+)
 
 -- Bufferline ordinal tab switching with Alt+1..Alt+9
 for i = 1, 6 do
@@ -20,7 +24,9 @@ end
 -- Window width adjustments
 vim.keymap.set("n", "<C-x>", "<C-w><", { desc = "Decrease window width" })
 vim.keymap.set("n", "<C-z>", "<C-w>>", { desc = "Increase window width" })
-
+-- Window height adjustments
+vim.keymap.set("n", "<C-t>8", "<C-w>+", { desc = "Increase window width" })
+vim.keymap.set("n", "<C-t>9", "<C-w>-", { desc = "Increase window width" })
 
 -- Copy current file path
 vim.keymap.set("n", "<leader>fP", function()
