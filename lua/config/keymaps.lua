@@ -21,12 +21,19 @@ for i = 1, 6 do
   end, { desc = "Go to buffer tab " .. i, silent = true })
 end
 
+-- Move buffers in the buffer line with CTRL + Arrow keys
+vim.keymap.set("n", "<C-Left>", ":BufferLineMovePrev<CR>", { desc = "Move buffer left" })
+vim.keymap.set("n", "<C-Right>", ":BufferLineMoveNext<CR>", { desc = "Move buffer right" })
+
 -- Window width adjustments
 vim.keymap.set("n", "<C-x>", "<C-w><", { desc = "Decrease window width" })
+vim.keymap.set("i", "<C-x>", "<C-w><", { desc = "Decrease window width" })
 vim.keymap.set("n", "<C-z>", "<C-w>>", { desc = "Increase window width" })
+vim.keymap.set("i", "<C-z>", "<C-w>>", { desc = "Increase window width" })
+
 -- Window height adjustments
-vim.keymap.set("n", "<C-t>8", "<C-w>+", { desc = "Increase window width" })
-vim.keymap.set("n", "<C-t>9", "<C-w>-", { desc = "Increase window width" })
+vim.keymap.set("n", "<C-t>8", "<C-w>+", { desc = "Increase window height" })
+vim.keymap.set("n", "<C-t>9", "<C-w>-", { desc = "Increase window height" })
 
 -- Copy current file path
 vim.keymap.set("n", "<leader>fP", function()
