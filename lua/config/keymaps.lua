@@ -7,12 +7,16 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
 
 vim.keymap.set("n", "<leader>rn", ":IncRename ")
 
-vim.keymap.set(
-  "n",
-  "<A-w>",
-  ":b#<bar>bd#<CR>",
-  { desc = "Close current buffer and switch to previous", silent = true, noremap = true }
-)
+vim.keymap.set("n", "<A-w>", function()
+  local bufnr = vim.api.nvim_get_current_buf()
+  -- Try switching to previous buffer
+  if pcall(vim.cmd, "b#") then
+    vim.cmd("bd " .. bufnr)
+  else
+    -- no alternate buffer, just wipe out
+    vim.cmd("bd")
+  end
+end, { desc = "Close current buffer safely" })
 
 -- Bufferline ordinal tab switching with Alt+1..Alt+9
 for i = 1, 6 do

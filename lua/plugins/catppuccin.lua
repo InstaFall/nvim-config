@@ -1,20 +1,27 @@
+-- return {}
 return {
+  -- {
+  --   "akinsho/bufferline.nvim",
+  --   optional = true,
+  --   opts = function(_, opts)
+  --     if (vim.g.colors_name or ""):find("catppuccin") then
+  --       opts.highlights = require("catppuccin.groups.integrations.bufferline").get()
+  --     end
+  --   end,
+  -- },
   {
     "catppuccin/nvim",
-    lazy = false,
     name = "catppuccin",
+    priority = 1000,
     config = function()
-      require("catppuccin").setup {
-        flavour = "mocha", -- 👈 Force Mocha as default
-        auto_integrations = true,
-      }
-      vim.cmd.colorscheme("catppuccin") -- 👈 Apply colorscheme here
+      require("catppuccin").setup()
+      vim.cmd.colorscheme("catppuccin")
     end,
   },
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin", -- This stays the same
-    },
-  },
+  -- {
+  --   "LazyVim/LazyVim",
+  --   opts = {
+  --     colorscheme = "catppuccin-mocha",
+  --   },
+  -- },
 }
