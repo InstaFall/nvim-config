@@ -39,7 +39,7 @@ vim.keymap.set("i", "<C-z>", "<C-w>>", { desc = "Increase window width" })
 vim.keymap.set("n", "<C-t>8", "<C-w>+", { desc = "Increase window height" })
 vim.keymap.set("n", "<C-t>9", "<C-w>-", { desc = "Increase window height" })
 
--- Copy current file path
+-- Copy current file full path
 vim.keymap.set("n", "<leader>fP", function()
   local path = vim.fn.expand("%:p")
   if path == "" then
@@ -49,3 +49,14 @@ vim.keymap.set("n", "<leader>fP", function()
   vim.fn.setreg("+", path)
   vim.notify("Copied path: " .. path)
 end, { desc = "Copy file path" })
+
+-- Copy current file path relative to cwd
+vim.keymap.set("n", "<leader>fp", function()
+  local path = vim.fn.expand("%:.") -- relative to current working dir
+  if path == "" then
+    vim.notify("No file currently open")
+    return
+  end
+  vim.fn.setreg("+", path)
+  vim.notify("Copied relative path: " .. path)
+end, { desc = "Copy relative file path" })
