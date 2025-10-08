@@ -10,7 +10,10 @@ vim.keymap.set("n", "<leader>rn", ":IncRename ")
 -- Pasting over a word (overwriting) normally updates clipboard with the deleted content.
 -- This change allows you to keep clipboard content unchanged when pasting over a selection.
 vim.keymap.set("x", "p", '"_dP', { desc = "Paste without overwriting clipboard" })
+-- Change (c) in visual mode without overwriting clipboard
+vim.keymap.set("x", "c", '"_c', { desc = "Change without overwriting clipboard" })
 
+-- Alt + w closes current highlighted buffer(tab)
 vim.keymap.set("n", "<A-w>", function()
   local bufnr = vim.api.nvim_get_current_buf()
   -- Try switching to previous buffer
