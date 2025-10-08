@@ -7,6 +7,10 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll up and center" })
 
 vim.keymap.set("n", "<leader>rn", ":IncRename ")
 
+-- Pasting over a word (overwriting) normally updates clipboard with the deleted content.
+-- This change allows you to keep clipboard content unchanged when pasting over a selection.
+vim.keymap.set("x", "p", '"_dP', { desc = "Paste without overwriting clipboard" })
+
 vim.keymap.set("n", "<A-w>", function()
   local bufnr = vim.api.nvim_get_current_buf()
   -- Try switching to previous buffer
@@ -60,3 +64,6 @@ vim.keymap.set("n", "<leader>fp", function()
   vim.fn.setreg("+", path)
   vim.notify("Copied relative path: " .. path)
 end, { desc = "Copy relative file path" })
+
+-- Add Copilot Panel to Space + a + c
+vim.keymap.set("n", "<leader>ac", "<cmd>Copilot panel<cr>", { desc = "Open Copilot Panel" })
