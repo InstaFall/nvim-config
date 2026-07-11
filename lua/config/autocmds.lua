@@ -34,7 +34,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
       local template = {
         "/**",
         " * \\file " .. filename,
-        " * \\author Your Name", -- Feel free to hardcode your actual name here
+        " * \\author ", -- Feel free to hardcode your actual name here
         " * \\brief ", -- We will place the cursor here!
         " * \\date " .. current_date,
         " */",
