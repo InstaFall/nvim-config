@@ -88,7 +88,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
         "# OS-specific configurations",
         "ifeq ($(OS),Windows_NT)",
         "  TARGET = $(PROJECT).exe",
-        "  CLEAN_CMD = del /f /q *.o $(PROJECT).exe 2>nul",
+        "  CLEAN_CMD = rm *.o $(PROJECT).exe",
         "  RUN_CMD = .\\$(TARGET)",
         "else",
         "  TARGET = $(PROJECT)",
