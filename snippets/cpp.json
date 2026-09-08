@@ -113,5 +113,20 @@
       "",
       "$0"
     ]
+  },
+  "Changelog Entry": {
+    "prefix": "clog",
+    "description": "Changelog entry block at the top of the file",
+    "body": [
+      "/*==============================================================================",
+      " * Changelog",
+      " *============================================================================*/",
+      "",
+      "/* ${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE} ${1:Author Name}",
+      " * - ${2:Description of changes made}",
+      " */",
+      "",
+      "$0"
+    ]
   }
 }
