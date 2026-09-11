@@ -70,3 +70,55 @@ end, { desc = "Copy relative file path" })
 
 -- Add Copilot Panel to Space + a + c
 vim.keymap.set("n", "<leader>ac", "<cmd>Copilot panel<cr>", { desc = "Open Copilot Panel" })
+
+--- Grep Specific Directory
+-- vim.keymap.set("n", "<leader>sG", function()
+--   local fzf = require("fzf-lua")
+--
+--   local start_dir = vim.fn.expand("%:p:h")
+--   local current_dir = start_dir
+--
+--   local function pick_directory()
+--     local cmd = string.format(
+--       "printf '%s\\n' '..' && find . -mindepth 1 -type d -not -path '*/.git*' | sort",
+--       vim.fn.shellescape("..")
+--     )
+--
+--     fzf.fzf_exec(cmd, {
+--       prompt = "Grep Directory> ",
+--       cwd = current_dir,
+--       file_icons = false,
+--       color_icons = false,
+--       fzf_opts = {
+--         ["--no-multi"] = true,
+--       },
+--       actions = {
+--         ["default"] = function(selected)
+--           if not selected[1] then
+--             return
+--           end
+--
+--           local selected_dir = selected[1]
+--
+--           if selected_dir == ".." then
+--             current_dir = vim.fn.fnamemodify(current_dir, ":h")
+--             pick_directory()
+--             return
+--           end
+--
+--           current_dir = vim.fn.fnamemodify(current_dir .. "/" .. selected_dir, ":p")
+--
+--           pick_directory()
+--         end,
+--
+--         ["ctrl-g"] = function()
+--           fzf.live_grep({
+--             cwd = current_dir,
+--           })
+--         end,
+--       },
+--     })
+--   end
+--
+--   pick_directory()
+-- end, { desc = "Grep (Choose Dir)" })

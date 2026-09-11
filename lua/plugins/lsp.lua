@@ -3,6 +3,13 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        yamlls = {
+          cmd = {
+            vim.fn.stdpath("data") .. "/mason/bin/yaml-language-server",
+            "--stdio",
+          },
+        },
+
         clangd = {
           root_dir = function(fname)
             -- If fname is passed as a buffer number, convert it to a file path
