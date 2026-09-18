@@ -135,3 +135,11 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufReadPost" }, {
   end,
   desc = "Auto-insert cross-platform Makefile skeleton",
 })
+
+-- Remove autoformat for .clang-format .clang-tidy files
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  pattern = { ".clang-format", ".clang-tidy" },
+  callback = function()
+    vim.b.autoformat = false
+  end,
+})
