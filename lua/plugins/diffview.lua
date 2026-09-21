@@ -1,5 +1,6 @@
 return {
-  "sindrets/diffview.nvim",
+  "dlyongemallo/diffview-plus.nvim",
+  version = "*", -- pin to tagged releases
   cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
   opts = {},
   keys = {
